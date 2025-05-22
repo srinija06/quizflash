@@ -1,7 +1,5 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '@/hooks/useAuth';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
@@ -12,7 +10,6 @@ const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
   const navigate = useNavigate();
   
   const handleSubmit = async (e: React.FormEvent) => {
@@ -26,14 +23,8 @@ const Login = () => {
     setIsLoading(true);
     
     try {
-      const success = await login(email, password);
-      
-      if (success) {
-        toast.success('Login successful');
-        navigate('/dashboard');
-      } else {
-        toast.error('Invalid email or password');
-      }
+      // Directly redirect to dashboard on submit
+      navigate('/dashboard');
     } catch (error) {
       toast.error('An error occurred during login');
       console.error(error);
