@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '@/hooks/useAuth';
@@ -33,7 +32,6 @@ const Register = () => {
     
     try {
       const success = await register(name, email, password);
-      
       if (success) {
         toast.success('Registration successful');
         navigate('/dashboard');
